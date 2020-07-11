@@ -1,31 +1,61 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import File from '../app/components/File';
+import { FileRepository } from '../app/repositories/FileRepository';
 
-const Title = styled.h1`
-    margin: 0;
-    line-height: 1.15;
-    font-size: 4rem;
+const FileList = styled.div`
+    display: block;
+    width: calc(100% - 50px);
 
-    .title-link {
-        color: #0070f3;
-        text-decoration: none;
+    @media (min-width: 500px) {
+        flex-wrap: wrap;
+        flex-direction: flex-start;
+        display: flex;
+    }
+`;
+const FileWrapper = styled.div`
+    width: 100%;
+
+    @media (min-width: 500px) {
+        max-width: 32%;
+        min-width: 200px;
+        margin: 5px;
     }
 `;
 
-const Description = styled.p`
-    line-height: 1.5;
-    font-size: 1.5rem;
-`;
-
 export default () => {
-    return (
-        <main>
-            <Title>
-                Welcome to <span className="title-link">Open Files!</span>
-            </Title>
+    const [files, setFiles] = useState([]);
+    useEffect(() => {
+        FileRepository.getList()
+            .then(response => {
+                if (Array.isArray(response.data)) {
+                    setFiles(response.data);
+                } else {
+                    console.warn(
+                        'Request for files failed with non-array "data" property',
+                        response
+                    );
+                }
+            })
+            .catch(response => {
+                console.warn(response);
+            });
+    }, []);
 
-            <Description>
-                You can upload files here for everyone to see!
-            </Description>
-        </main>
+    return (
+        <>
+            <h2>My files:</h2>
+            <FileList>
+                {files.map(file => (
+                    <FileWrapper key={file.name}>
+                        <File
+                            name={file.name}
+                            size={file.size}
+                            src={file.src}
+                        />
+                    </FileWrapper>
+                ))}
+            </FileList>
+        </>
     );
 };

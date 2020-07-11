@@ -5,9 +5,6 @@ export default () => (
         <img></img>
         <div>
             <Link href="/">
-                <a>Home</a>
-            </Link>
-            <Link href="/files">
                 <a>Files</a>
             </Link>
             <Link href="/upload">
