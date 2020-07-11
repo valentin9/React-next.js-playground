@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import File from '../app/components/File';
 import { FileRepository } from '../app/repositories/FileRepository';
+import FileInput from '../app/components/FileInput';
 
 const FileList = styled.div`
     display: block;
@@ -42,6 +43,16 @@ export default () => {
             });
     }, []);
 
+    const handleChangeFile = event => {
+        event.preventDefault();
+        const file = event.target.files[0];
+        FileRepository.uploadFile(file)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(response => console.warn(response));
+    };
+
     return (
         <>
             <h2>My files:</h2>
@@ -56,6 +67,7 @@ export default () => {
                     </FileWrapper>
                 ))}
             </FileList>
+            <FileInput id="uploadImage" onChange={handleChangeFile} />
         </>
     );
 };
