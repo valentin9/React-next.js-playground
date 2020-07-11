@@ -25,11 +25,19 @@ export default props => {
         setSize(formattedSize);
     }, [props.size, props.src]);
 
+    const handleDelete = () => {
+        if (typeof props.onDelete === 'function') {
+            props.onDelete(props.name);
+        }
+    };
+
     return (
         <FileElement>
             <h4>{props.name}</h4>
             <p>{size}</p>
-            <Button type="button">delete</Button>
+            <Button type="button" onClick={handleDelete}>
+                delete
+            </Button>
             <Image src={props.src} />
         </FileElement>
     );
