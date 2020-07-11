@@ -1,13 +1,24 @@
 import axios from 'axios';
 
-class FileRepository {
-    static BASE_URL = 'http://localhost:3200/';
+const API_FILES = 'http://localhost:3200/files';
+const FORM_FIELD_INPUT_NAME = 'imagefile';
 
+class FileRepository {
     static getList() {
+        return axios.get(API_FILES);
+    }
+
+    static uploadFile(file) {
+        const formData = new FormData();
+        formData.append(FORM_FIELD_INPUT_NAME, file);
+
         return axios({
-            method: 'get',
-            url: 'files',
-            baseURL: this.BASE_URL,
+            method: 'post',
+            url: API_FILES,
+            data: formData,
+            headers: {
+                'content-type': 'multipart/form-data',
+            },
         });
     }
 }

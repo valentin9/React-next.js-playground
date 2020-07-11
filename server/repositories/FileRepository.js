@@ -21,7 +21,7 @@ class FileRepository {
             src: 'https://picsum.photos/seed/imcome.jpg/100/100',
         },
         {
-            name: 'Zürich.png',
+            name: 'Hamburg.png',
             size: 1200000,
             src: 'https://picsum.photos/seed/Zürich.png/100/100',
         },
@@ -51,6 +51,8 @@ class FileRepository {
             size: newFile.size,
             src: `https://picsum.photos/seed/${randomSeed}/100/100`,
         });
+
+        return this.files;
     }
 
     static deleteFile(fileName) {
