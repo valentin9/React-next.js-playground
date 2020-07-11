@@ -44,8 +44,13 @@ class FileRepository {
         return this.files;
     }
 
+    static searchFiles(query) {
+        console.log(query);
+        return this.files.filter(file => file.name.indexOf(query) > -1);
+    }
+
     static saveFile(newFile) {
-        const randomSeed = Math.floor(Math.random() * 10);
+        const randomSeed = Math.floor(Math.random() * 100);
         this.files.push({
             name: newFile.name,
             size: newFile.size,
@@ -57,13 +62,13 @@ class FileRepository {
 
     static deleteFile(fileName) {
         const foundFileIndex = this.findIndex(fileName);
-        if (foundFile) {
+        if (foundFileIndex > -1) {
             this.files.splice(foundFileIndex, 1);
 
-            return true;
+            return this.files;
         }
 
-        return false;
+        return undefined;
     }
 }
 

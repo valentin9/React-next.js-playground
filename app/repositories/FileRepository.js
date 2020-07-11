@@ -21,6 +21,20 @@ class FileRepository {
             },
         });
     }
+
+    static serachFiles(query) {
+        return axios.get(API_FILES, {
+            params: {
+                search: query,
+            },
+        });
+    }
+
+    static deleteFile(fileName) {
+        const escapedFileName = encodeURI(fileName);
+
+        return axios.delete(`${API_FILES}/${escapedFileName}`);
+    }
 }
 
 export { FileRepository };
