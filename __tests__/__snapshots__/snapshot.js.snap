@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<main>
+  <h1
+    className="pages__Title-sc-1q4tzor-0 bjkdwR"
+  >
+    Welcome to 
+    <span
+      className="title-link"
+    >
+      Open Files!
+    </span>
+  </h1>
+  <p
+    className="pages__Description-sc-1q4tzor-1 ilAzr"
+  >
+    You can upload files here for everyone to see!
+  </p>
+</main>
+`;
