@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { bytesFormatter } from "../tools/bytesFormatter";
+import { bytesFormatter } from '../tools/bytesFormatter';
 import Button from '../styles/Button';
 import styled from 'styled-components';
 
 const FileElement = styled.div`
     background-color: #cecece;
     padding: 2rem;
-    box-shadow: 2px 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
 `;
 
@@ -18,7 +18,7 @@ const Image = styled.img`
 
 export default props => {
     const [size, setSize] = useState(0);
-    
+
     useEffect(() => {
         const sizeNumber = props.size ?? 0;
         const formattedSize = bytesFormatter(sizeNumber);
@@ -33,4 +33,4 @@ export default props => {
             <Image src={props.src} />
         </FileElement>
     );
-}
+};

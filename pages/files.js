@@ -1,6 +1,6 @@
-import File from '../app/components/File';
 import { useState } from 'react';
 import styled from 'styled-components';
+import File from '../app/components/File';
 
 const FILES = [
     {
@@ -64,7 +64,11 @@ export default () => {
             <FileList>
                 {files.map(file => (
                     <FileWrapper key={file.name}>
-                        <File name={file.name} size={file.size} src={file.src} />
+                        <File
+                            name={file.name}
+                            size={file.size}
+                            src={file.src}
+                        />
                     </FileWrapper>
                 ))}
             </FileList>

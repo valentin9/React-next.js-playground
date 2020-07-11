@@ -1,10 +1,10 @@
 import App, { Container } from 'next/app';
 import Layout from '../app/layout/Layout';
-import { GlobalStyles } from "../app/styles/Base";
+import { GlobalStyles } from '../app/styles/Base';
 
 class MyApp extends App {
     render() {
-        const  { Component } = this.props;
+        const { Component } = this.props;
 
         return (
             <>

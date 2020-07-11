@@ -20,12 +20,9 @@ const MyFooter = styled.footer`
 function Footer(props) {
     return (
         <MyFooter>
-            <a>
-                footer
-            </a>
+            <a>footer</a>
         </MyFooter>
     );
 }
 
 export default Footer;
- 

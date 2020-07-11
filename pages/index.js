@@ -27,5 +27,5 @@ export default () => {
                 You can upload files here for everyone to see!
             </Description>
         </main>
-    )
+    );
 };

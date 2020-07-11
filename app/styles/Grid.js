@@ -1,4 +1,4 @@
-const grid = styled.div`
+const Grid = styled.div`
     display: block;
     width: calc(100% - 50px);
 
@@ -8,7 +8,7 @@ const grid = styled.div`
         display: flex;
     }
 `;
-const FileWrapper = styled.div`
+const Column = styled.div`
     width: 100%;
 
     @media (min-width: 500px) {
@@ -16,4 +16,4 @@ const FileWrapper = styled.div`
     }
 `;
 
-export {  };
+export { Grid, Column };
