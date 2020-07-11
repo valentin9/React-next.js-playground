@@ -1,11 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Index from '../pages/index';
+import Files from '../pages/files';
 
 test('renders deploy link', () => {
-    const { getByText } = render(<Index />);
-    const linkElement = getByText(
-        /You can upload files here for everyone to see\!/
-    );
+    const { getByText } = render(<Files />);
+    const linkElement = getByText(/File uploader/);
     expect(linkElement).toBeInTheDocument();
 });
