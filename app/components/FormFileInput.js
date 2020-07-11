@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ButtonSpan as Button } from '../styles/Button';
 
 const DEFAULT_VALID_TYPES = 'image/jpeg,image/png';
 const ERROR_MESSAGE_ID_MISSING = 'Missing or wrong prop "id"';
@@ -7,10 +8,8 @@ const HiddenInput = styled.input`
     display: none;
 `;
 
-const InputWrapper = styled.label`
+const InlineLabel = styled.label`
     display: inline-block;
-    padding: 10px 5px;
-    background-color: #cfcfcf;
 `;
 
 export default ({
@@ -24,14 +23,14 @@ export default ({
     }
 
     return (
-        <InputWrapper tabindex="0" htmlFor={id}>
-            {children}
+        <InlineLabel tabindex="0" htmlFor={id}>
+            <Button>{children}</Button>
             <HiddenInput
                 id={id}
                 type="file"
                 accept={ValidTypes}
                 onChange={onChange}
             />
-        </InputWrapper>
+        </InlineLabel>
     );
 };

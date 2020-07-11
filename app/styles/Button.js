@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const Button = styled.button`
+const ButtonStyle = css`
     cursor: pointer;
     border-radius: 5px;
     padding: 7px 10px;
@@ -11,4 +11,14 @@ const Button = styled.button`
     }
 `;
 
-export default Button;
+const ButtonInput = styled.button`
+    ${ButtonStyle}
+`;
+
+const ButtonSpan = styled.span`
+    ${ButtonStyle}
+`;
+
+export default ButtonInput;
+
+export { ButtonInput, ButtonSpan };

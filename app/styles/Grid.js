@@ -11,4 +11,14 @@ const Grid = styled.div`
     }
 `;
 
-export { Grid };
+const Column = styled.div`
+    ${({ right }) =>
+        right &&
+        `
+    @media (min-width: 500px) {
+        margin-left: auto;
+    }
+  `}
+`;
+
+export { Grid, Column };

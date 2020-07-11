@@ -8,7 +8,7 @@ import Input from '../app/components/FormInput';
 import FileInput from '../app/components/FormFileInput';
 
 import Button from '../app/styles/Button';
-import { Grid } from '../app/styles/Grid';
+import { Grid, Column } from '../app/styles/Grid';
 
 const FileWrapper = styled.div`
     width: 100%;
@@ -78,13 +78,26 @@ export default () => {
 
     return (
         <>
-            <Input id="searchinput" onBlur={updateQuery} value={searchQuery} />
-            <Button type="button" onClick={handleSearch}>
-                search
-            </Button>
             <Grid>
-                <div>Total size: {bytesFormatter(filesTotalSize)}</div>
-                <div>{files.length} Documents</div>
+                <Column>
+                    <Input
+                        id="searchinput"
+                        onBlur={updateQuery}
+                        value={searchQuery}
+                    />
+                    <Button type="button" onClick={handleSearch}>
+                        search
+                    </Button>
+                </Column>
+                <Column right>
+                    <FileInput id="uploadImage" onChange={handleChangeFile}>
+                        Upload
+                    </FileInput>
+                </Column>
+            </Grid>
+            <Grid>
+                <Column>Total size: {bytesFormatter(filesTotalSize)}</Column>
+                <Column right>{files.length} Documents</Column>
             </Grid>
             <Grid>
                 {files.map(file => (
@@ -98,9 +111,6 @@ export default () => {
                     </FileWrapper>
                 ))}
             </Grid>
-            <FileInput id="uploadImage" onChange={handleChangeFile}>
-                Upload
-            </FileInput>
         </>
     );
 };
