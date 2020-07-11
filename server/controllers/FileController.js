@@ -31,7 +31,7 @@ function deleteFile(request, response) {
     response.json(FILES);
 }
 
-module.exports.get = getFile;
-module.exports.getList = getList;
+module.exports.get = getList;
+module.exports.getDetail = getFile;
 module.exports.post = postFile;
 module.exports.delete = deleteFile;
