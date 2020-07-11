@@ -4,7 +4,7 @@ import Button from '../styles/Button';
 import styled from 'styled-components';
 
 const FileElement = styled.div`
-    background-color: #cecece;
+    background-color: #fff;
     padding: 2rem;
     box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
