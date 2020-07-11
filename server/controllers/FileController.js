@@ -2,6 +2,7 @@ const FileRepository = require('../repositories/FileRepository');
 
 const MESSAGE_404 = 'Not found';
 const MESSAGE_UPLOAD_NO_FILES = 'No files were uploaded.';
+const MESSAGE_IMAGE_NOT_SUBMITTED = '"imagefile" is not submittet';
 
 function getFile(request, response) {
     const fileName = request.params.fileName;
@@ -23,8 +24,11 @@ function postFile(request, response) {
         return response.status(400).send(MESSAGE_UPLOAD_NO_FILES);
     }
     const file = request.files.imagefile;
-    request.FileRepository.saveFile(file);
-    response.json(FILES);
+    if (!file) {
+        return response.status(400).send(MESSAGE_IMAGE_NOT_SUBMITTED);
+    }
+
+    return response.json(FileRepository.saveFile(file));
 }
 
 function deleteFile(request, response) {
