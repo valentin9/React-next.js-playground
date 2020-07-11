@@ -1,39 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import File from '../app/components/File';
-
-const FILES = [
-    {
-        name: 'file1.jpg',
-        size: 100000,
-        src: 'https://picsum.photos/seed/file1.jpg/100/100',
-    },
-    {
-        name: 'doggy.jpg',
-        size: 200000,
-        src: 'https://picsum.photos/seed/doggy.jpg/100/100',
-    },
-    {
-        name: 'landscape.png',
-        size: 5000000,
-        src: 'https://picsum.photos/seed/landscape.png/100/100',
-    },
-    {
-        name: 'imcome.jpg',
-        size: 120000,
-        src: 'https://picsum.photos/seed/imcome.jpg/100/100',
-    },
-    {
-        name: 'Zürich.png',
-        size: 1200000,
-        src: 'https://picsum.photos/seed/Zürich.png/100/100',
-    },
-    {
-        name: 'cats.png',
-        size: 100000,
-        src: 'https://picsum.photos/seed/cats.png/100/100',
-    },
-];
+import { FileRepository } from '../app/repositories/FileRepository';
 
 const FileList = styled.div`
     display: block;
@@ -56,7 +24,23 @@ const FileWrapper = styled.div`
 `;
 
 export default () => {
-    const [files, setFiles] = useState(FILES);
+    const [files, setFiles] = useState([]);
+    useEffect(() => {
+        FileRepository.getList()
+            .then(response => {
+                if (Array.isArray(response.data)) {
+                    setFiles(response.data);
+                } else {
+                    console.warn(
+                        'Request for files failed with non-array "data" property',
+                        response
+                    );
+                }
+            })
+            .catch(response => {
+                console.warn(response);
+            });
+    }, []);
 
     return (
         <>
