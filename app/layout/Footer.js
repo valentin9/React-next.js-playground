@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-const MyFooter = styled.footer`
+const Footer = styled.footer`
     width: 100%;
     height: 100px;
+    position: absolute;
+    bottom: 0;
     border-top: 1px solid #eaeaea;
     display: flex;
     justify-content: center;
@@ -17,12 +19,8 @@ const MyFooter = styled.footer`
     }
 `;
 
-function Footer(props) {
-    return (
-        <MyFooter>
-            <a>footer</a>
-        </MyFooter>
-    );
-}
-
-export default Footer;
+export default () => (
+    <Footer>
+        <a>footer</a>
+    </Footer>
+);
