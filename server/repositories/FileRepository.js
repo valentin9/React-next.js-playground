@@ -3,32 +3,26 @@ class FileRepository {
         {
             name: 'file1.jpg',
             size: 100000,
-            src: 'https://picsum.photos/seed/file1.jpg/100/100',
         },
         {
             name: 'doggy.jpg',
             size: 200000,
-            src: 'https://picsum.photos/seed/doggy.jpg/100/100',
         },
         {
             name: 'landscape.png',
             size: 5000000,
-            src: 'https://picsum.photos/seed/landscape.png/100/100',
         },
         {
             name: 'imcome.jpg',
             size: 120000,
-            src: 'https://picsum.photos/seed/imcome.jpg/100/100',
         },
         {
             name: 'Hamburg.png',
             size: 1200000,
-            src: 'https://picsum.photos/seed/Zürich.png/100/100',
         },
         {
             name: 'cats.png',
             size: 100000,
-            src: 'https://picsum.photos/seed/cats.png/100/100',
         },
     ];
 
@@ -49,12 +43,24 @@ class FileRepository {
         return this.files.filter(file => file.name.indexOf(query) > -1);
     }
 
+    static validateFile(file) {
+        if (!file) {
+            return false;
+        }
+        if (typeof file.name !== 'string') {
+            return false;
+        }
+        if (typeof file.size !== 'number') {
+            return false;
+        }
+
+        return true;
+    }
+
     static saveFile(newFile) {
-        const randomSeed = Math.floor(Math.random() * 100);
         this.files.push({
             name: newFile.name,
             size: newFile.size,
-            src: `https://picsum.photos/seed/${randomSeed}/100/100`,
         });
 
         return this.files;
