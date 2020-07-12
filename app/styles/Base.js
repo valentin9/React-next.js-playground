@@ -7,7 +7,7 @@ const MainContent = styled.div`
     justify-content: center;
     align-items: center;
     max-width: 960px;
-    margin: 0 auto;
+    margin: 100px auto;
 `;
 
 const GlobalStyles = createGlobalStyle`

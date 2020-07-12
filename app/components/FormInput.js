@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import variables from '../styles/variables';
 
 const ERROR_MESSAGE_ID_MISSING = 'FileInput: missing or wrong prop "id"';
 
@@ -10,6 +11,12 @@ const InputWrapper = styled.label`
 
 const Input = styled.input`
     padding: 12px 16px;
+    width: 100%;
+
+    @media (min-width: ${variables.breakpoint}) {
+        width: auto;
+        display: inline-block;
+    }
 `;
 
 export default ({ id, onChange, onBlur, children }) => {
