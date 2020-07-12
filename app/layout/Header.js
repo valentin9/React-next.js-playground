@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { Grid, Column } from '../styles/Grid';
+import Search from '../components/Search';
+import FileUpload from '../components/FileUpload';
 
 const Header = styled.header`
     position: absolute;
@@ -7,7 +10,13 @@ const Header = styled.header`
 
 export default () => (
     <Header>
-        <img></img>
-        <h1>File uploader</h1>
+        <Grid>
+            <Column>
+                <Search />
+            </Column>
+            <Column right>
+                <FileUpload />
+            </Column>
+        </Grid>
     </Header>
 );

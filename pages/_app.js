@@ -1,20 +1,25 @@
 import App, { Container } from 'next/app';
 import Layout from '../app/layout/Layout';
 import { GlobalStyles } from '../app/styles/Base';
+import { useState } from 'react';
+import FilesContext from '../app/FilesContext';
 
-class MyApp extends App {
-    render() {
-        const { Component } = this.props;
+const MyApp = ({ Component }) => {
+    const [files, setFiles] = useState([]);
 
-        return (
-            <>
-                <GlobalStyles />
-                <Layout>
-                    <Component />
-                </Layout>
-            </>
-        );
-    }
-}
+    const filesStore = {
+        files,
+        setFiles,
+    };
+
+    return (
+        <FilesContext.Provider value={filesStore}>
+            <GlobalStyles />
+            <Layout>
+                <Component />
+            </Layout>
+        </FilesContext.Provider>
+    );
+};
 
 export default MyApp;

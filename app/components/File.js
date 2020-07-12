@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { bytesFormatter } from '../tools/bytesFormatter';
 import Button from '../styles/Button';
 import styled from 'styled-components';
+import SizeFormatter from './SizeFormatter';
 
 const FileElement = styled.div`
     background-color: #fff;
@@ -34,7 +35,9 @@ export default props => {
     return (
         <FileElement>
             <h4>{props.name}</h4>
-            <p>{size}</p>
+            <p>
+                <SizeFormatter>{size}</SizeFormatter>
+            </p>
             <Button type="button" onClick={handleDelete}>
                 delete
             </Button>
