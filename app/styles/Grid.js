@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import variables from './variables';
 
 const Grid = styled.div`
     display: block;
     width: calc(100% - 50px);
 
-    @media (min-width: 500px) {
+    @media (min-width: ${variables.breakpoint}) {
         flex-wrap: wrap;
         flex-direction: flex-start;
         display: flex;
@@ -15,7 +16,7 @@ const Column = styled.div`
     ${({ right }) =>
         right &&
         `
-    @media (min-width: 500px) {
+    @media (min-width: ${variables.breakpoint}) {
         margin-left: auto;
     }
   `}

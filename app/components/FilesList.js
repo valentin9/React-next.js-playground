@@ -3,11 +3,12 @@ import { useContext } from 'react';
 import FilesContext from '../FilesContext';
 import { FileRepository } from '../repositories/FileRepository';
 import File from './File';
+import variables from '../styles/variables';
 
 const FileWrapper = styled.div`
     width: 100%;
 
-    @media (min-width: 500px) {
+    @media (min-width: ${variables.breakpoint}) {
         max-width: 32%;
         min-width: 200px;
         margin: 5px;

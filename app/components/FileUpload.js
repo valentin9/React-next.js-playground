@@ -21,14 +21,15 @@ export default () => {
     const handleChangeFile = event => {
         event.preventDefault();
         resetMessages();
-        const file = event.target.files[0];
+        const fileInput = event.target;
+        const file = fileInput.files[0];
 
         if (!file) {
             return;
         }
 
         if (file.size > SIZE_LIMIT_10MB) {
-            event.target.value = '';
+            fileInput.value = '';
             setShowMaxSizeError(true);
 
             return;
@@ -36,10 +37,11 @@ export default () => {
 
         FileRepository.uploadFile(file)
             .then(response => {
-                event.target.value = '';
+                fileInput.value = '';
                 setFiles(response.data);
             })
             .catch(error => {
+                console.warn(error);
                 if (error.response.status === HTTP_STATUS_CONFLICT) {
                     setShowExistsMessage(true);
                 }
