@@ -19,8 +19,4 @@ const Footer = styled.footer`
     }
 `;
 
-export default () => (
-    <Footer>
-        <a>footer</a>
-    </Footer>
-);
+export default () => <Footer>Built with ❤️</Footer>;

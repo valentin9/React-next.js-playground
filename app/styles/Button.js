@@ -2,13 +2,19 @@ import styled, { css } from 'styled-components';
 
 const ButtonStyle = css`
     cursor: pointer;
-    border-radius: 5px;
-    padding: 7px 10px;
+    background-color: #efefef;
+    padding: 12px 16px;
     border: 1px solid #aaa;
 
     :hover {
         background-color: #ccc;
     }
+`;
+
+const SmallButton = styled.span`
+    ${ButtonStyle}
+    padding: 4px 7px;
+    font-size: 1.4rem;
 `;
 
 const ButtonInput = styled.button`
@@ -21,4 +27,4 @@ const ButtonSpan = styled.span`
 
 export default ButtonInput;
 
-export { ButtonInput, ButtonSpan };
+export { ButtonInput, ButtonSpan, SmallButton };

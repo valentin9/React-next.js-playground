@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { bytesFormatter } from '../tools/bytesFormatter';
-import Button from '../styles/Button';
+import { SmallButton } from '../styles/Button';
 import styled from 'styled-components';
 import SizeFormatter from './SizeFormatter';
 
@@ -35,9 +35,9 @@ export default props => {
             <p>
                 <SizeFormatter>{props.size}</SizeFormatter>
             </p>
-            <Button type="button" onClick={handleDelete}>
+            <SmallButton type="button" onClick={handleDelete}>
                 delete
-            </Button>
+            </SmallButton>
             <Image src={props.src} />
         </FileElement>
     );

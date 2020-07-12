@@ -8,6 +8,10 @@ const InputWrapper = styled.label`
     background-color: #cfcfcf;
 `;
 
+const Input = styled.input`
+    padding: 12px 16px;
+`;
+
 export default ({ id, onChange, onBlur, children }) => {
     if (typeof id !== 'string') {
         throw new Error(ERROR_MESSAGE_ID_MISSING);
@@ -16,7 +20,7 @@ export default ({ id, onChange, onBlur, children }) => {
     return (
         <label htmlFor={id}>
             {children}
-            <input id={id} type="input" onChange={onChange} onBlur={onBlur} />
+            <Input id={id} type="input" onChange={onChange} onBlur={onBlur} />
         </label>
     );
 };

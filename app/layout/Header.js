@@ -6,11 +6,14 @@ import FileUpload from '../components/FileUpload';
 const Header = styled.header`
     position: absolute;
     top: 0;
+    width: 100%;
+    padding: 20px;
+    padding: calc((100% - 960px) / 2);
 `;
 
 export default () => (
     <Header>
-        <Grid>
+        <Grid center>
             <Column>
                 <Search />
             </Column>

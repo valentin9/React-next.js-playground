@@ -4,6 +4,11 @@ import SizeFormatter from '../app/components/SizeFormatter';
 import FilesContext from '../app/FilesContext';
 import { Grid, Column } from '../app/styles/Grid';
 import FilesList from '../app/components/FilesList';
+import styled from 'styled-components';
+
+const InfoWrapper = styled.div`
+    padding: 20px;
+`;
 
 export default () => {
     const { files, setFiles } = useContext(FilesContext);
@@ -35,10 +40,14 @@ export default () => {
         <>
             <Grid>
                 <Column>
-                    Total size:{' '}
-                    <SizeFormatter>{filesTotalSizeBytes}</SizeFormatter>
+                    <InfoWrapper>
+                        Total size:{' '}
+                        <SizeFormatter>{filesTotalSizeBytes}</SizeFormatter>
+                    </InfoWrapper>
                 </Column>
-                <Column right>{filesCount} Documents</Column>
+                <Column right>
+                    <InfoWrapper>{filesCount} Documents</InfoWrapper>
+                </Column>
             </Grid>
             <Grid>
                 <FilesList />

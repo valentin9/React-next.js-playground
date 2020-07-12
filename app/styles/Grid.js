@@ -4,6 +4,11 @@ import variables from './variables';
 const Grid = styled.div`
     display: block;
     width: calc(100% - 50px);
+    ${({ center }) =>
+        center &&
+        `
+        align-items: center;
+    `}
 
     @media (min-width: ${variables.breakpoint}) {
         flex-wrap: wrap;

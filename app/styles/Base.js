@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
     html {
         box-sizing: border-box;
         font-size: 10px;
+        font-family: sans-serif;
     }
     body {
         margin: 0;
