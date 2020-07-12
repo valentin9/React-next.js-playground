@@ -17,15 +17,12 @@ const Image = styled.img`
     top: 1rem;
 `;
 
+const FileName = styled.span`
+    font-weight: bold;
+    font-size: 2rem;
+`;
+
 export default props => {
-    const [size, setSize] = useState(0);
-
-    useEffect(() => {
-        const sizeNumber = props.size ?? 0;
-        const formattedSize = bytesFormatter(sizeNumber);
-        setSize(formattedSize);
-    }, [props.size, props.src]);
-
     const handleDelete = () => {
         if (typeof props.onDelete === 'function') {
             props.onDelete(props.name);
@@ -34,9 +31,9 @@ export default props => {
 
     return (
         <FileElement>
-            <h4>{props.name}</h4>
+            <FileName>{props.name}</FileName>
             <p>
-                <SizeFormatter>{size}</SizeFormatter>
+                <SizeFormatter>{props.size}</SizeFormatter>
             </p>
             <Button type="button" onClick={handleDelete}>
                 delete
