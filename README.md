@@ -10,6 +10,8 @@ run npm install from "./server" folder
 run frontend with "npm run dev"
 run api server from "./server" with "npm start"
 
+open in browser on localhost:3000
+
 ## Security
 
 // List security concerns:
