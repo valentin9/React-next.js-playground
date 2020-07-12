@@ -27,16 +27,18 @@ export default () => {
 
     return (
         <>
-            {files.map(file => (
-                <FileWrapper key={file.name}>
-                    <File
-                        onDelete={handleDelete}
-                        name={file.name}
-                        size={file.size}
-                        src={file.src}
-                    />
-                </FileWrapper>
-            ))}
+            {(files.length &&
+                files.map((file, index) => (
+                    <FileWrapper key={file.name + index}>
+                        <File
+                            onDelete={handleDelete}
+                            name={file.name}
+                            size={file.size}
+                            src={file.src}
+                        />
+                    </FileWrapper>
+                ))) ||
+                'No files uploaded yet'}
         </>
     );
 };
