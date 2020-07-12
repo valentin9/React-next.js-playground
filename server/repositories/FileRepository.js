@@ -43,6 +43,13 @@ class FileRepository {
         return this.files.filter(file => file.name.indexOf(query) > -1);
     }
 
+    static fileExists(file) {
+        return (
+            this.files.find(existingFile => existingFile.name === file.name) !==
+            undefined
+        );
+    }
+
     static validateFile(file) {
         if (!file) {
             return false;

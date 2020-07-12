@@ -4,6 +4,7 @@ const MESSAGE_404 = 'Not found';
 const MESSAGE_UPLOAD_NO_FILES = 'No files were uploaded.';
 const MESSAGE_DELETE_NOT_FOUND = 'File not found';
 const MESSAGE_FILE_INVALID = 'File is not valid or not submitted';
+const MESSAGE_FILE_EXISTS = 'File already exists';
 
 function getFile(request, response) {
     const fileName = request.params.fileName;
@@ -33,6 +34,10 @@ function postFile(request, response) {
 
     if (FileRepository.validateFile(file) === false) {
         return response.status(400).send(MESSAGE_FILE_INVALID);
+    }
+
+    if (FileRepository.fileExists(file)) {
+        return response.status(409).send(MESSAGE_FILE_EXISTS);
     }
 
     return response.json(FileRepository.saveFile(file));
