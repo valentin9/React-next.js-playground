@@ -1,4 +1,4 @@
-# Valentin - 12.07.2020
+# React playground
 
 ## Installation
 
